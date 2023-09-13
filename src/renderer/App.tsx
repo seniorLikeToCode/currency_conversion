@@ -4,22 +4,21 @@ import exchangeLogo from '../../assets/arrow-left-right.svg';
 
 import './App.css';
 
+const key = 'afff1782afc6a2116276b02c';
 async function fetchCountries() {
   const response = await fetch(
-    `https://v6.exchangerate-api.com/v6/${process.env.KEY}/codes`
+    `https://v6.exchangerate-api.com/v6/${key}/codes`
   );
   const data = await response.json();
   return data.supported_codes;
 }
 
-
 async function convert(from: string, to: string) {
   const response = await fetch(
-    `https://v6.exchangerate-api.com/v6//${process.env.KEY}/pair/${from}/${to}`
+    `https://v6.exchangerate-api.com/v6//${key}/pair/${from}/${to}`
   );
   const data = await response.json();
-  console.log(data);
-  return data.connverion_rates;
+  return data.conversion_rate;
 }
 
 function Home() {
@@ -79,21 +78,22 @@ const roundOff = (num: number) => {
       <h1 className="text-2xl pb-8">Simple Currency Converter</h1>
       <div className="flex flex-col bg-white rounded drop-shadow h-[400px] w-[370px]">
         <div className='h-2 bg-sky-500 rounded-t'></div>
-        <h1 className="text-center text-lg text-neutral-500 pt-8">Exchange Rate</h1>
+        <h1 className="text-center text-lg text-neutral-500 pt-6 pb-2">Exchange Rate</h1>
         <p className="text-center text-5xl pb-6">{result}</p>
 
         <form onSubmit={handleSubmit} className='px-8'>
           <div className="flex flex-col pb-6">
             <label className='text-sm text-neutral-500'>Amount</label>
             <input className='border h-8 rounded px-2' 
+            value={amount}
             type="number" name="amount" onChange={handleAmountChange}></input>
           </div>
           <div className='flex justify-between pb-8'>
             <div className='flex flex-col'>
               <label className='text-sm text-neutral-500'>From</label>
-              <select value='INR' name="from" onChange={handleFromChange} className='border w-32 h-8 rounded'>
+              <select value={from} name="from" onChange={handleFromChange} className='border w-32 h-8 rounded'>
                 {countries.map((country: any) => (
-                  <option value={country[0]}>{country[1]}</option>
+                  <option key={country[0]} value={country[0]}>{country[1]}</option>
                 ))}
               </select>
             </div>
@@ -102,15 +102,15 @@ const roundOff = (num: number) => {
 
             <div className='flex flex-col'>
               <label className='text-sm text-neutral-500'>To</label>
-              <select value='INR' name="to" onClick={handleToChange} className='border w-32 h-8 rounded'>
+              <select value={to} name="to" onChange={handleToChange} className='border w-32 h-8 rounded'>
                 {countries.map((country: any) => (
-                  <option value={country[0]}>{country[1]}</option>
+                  <option key={country[0]} value={country[0]}>{country[1]}</option>
                 ))}
               </select>
             </div>
           </div>
           <div className='flex justify-center'>
-          <button className='bg-sky-500 rounded shadow-md h-10 w-40' type="submit">Convert</button>
+          <button className='bg-sky-500 text-white rounded shadow-md h-10 w-40' type="submit">Convert</button>
           </div>
         </form>
       </div>
