@@ -17,28 +17,14 @@ This is a simple currency conversion web application built using React on the cl
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/currency-conversion-app.git
-   cd currency-conversion
+   git clone https://github.com/seniorLikeToCode/currency_conversion.git
+   cd currency_conversion
    ```
 
 2. Install frontend dependencies:
 
    ```bash
-   cd client
    npm install
-   ```
-
-3. Install backend dependencies:
-
-   ```bash
-   cd server
-   npm install
-   ```
-
-4. Create a `.env` file in the `server` directory and add your API key obtained from [ExchangeRatesAPI](https://www.exchangerate-api.com/):
-
-   ```env
-   API_KEY=your_api_key_here
    ```
 
 ## Usage
@@ -46,7 +32,6 @@ This is a simple currency conversion web application built using React on the cl
 1. Start the client:
 
    ```bash
-   cd client
    npm start
    ```
 
