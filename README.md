@@ -9,7 +9,7 @@ This is a simple currency conversion web application built using React on the cl
 
 ## Technologies Used
 
-- **Frontend**: React, Axios for HTTP requests, React Router for routing.
+- **Frontend**: Electorn, React, Axios for HTTP requests, React Router for routing.
 - **External API**: [ExchangeRatesAPI](https://www.exchangerate-api.com/) for real-time exchange rate data.
 
 ## Installation
